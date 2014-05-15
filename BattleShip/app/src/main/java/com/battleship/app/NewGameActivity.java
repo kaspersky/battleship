@@ -21,6 +21,7 @@ import java.util.logging.Handler;
 
 public class NewGameActivity extends ActionBarActivity {
     public Button start;
+    public Button clear;
     public static ImageView[][] imageMap = new ImageView[10][10];
     public Handler uiHandler;
     @Override
@@ -79,13 +80,30 @@ public class NewGameActivity extends ActionBarActivity {
         }
 
         start = (Button) findViewById(R.id.setup_btn);
+        clear = (Button)findViewById(R.id.clear_btn);
+
         start.setEnabled(false);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
                 start.setEnabled(false);
+                clear.setEnabled(false);
                 start.setText("Waiting for enemy...");
                 (new Thread(new ServerThread())).start();
+            }
+        });
+
+        clear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                start.setEnabled(false);
+
+                setToFalse(GlobalState.getInstance().boolMap);
+                for (int i = 0; i < 10; ++i) {
+                    for (int j = 0; j < 10; ++j) {
+                        imageMap[i][j].setBackgroundResource(R.drawable.white);
+                    }
+                }
             }
         });
     }
