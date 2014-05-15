@@ -1,5 +1,8 @@
 package com.battleship.config;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+
 import com.battleship.app.GameActivity;
 import com.battleship.app.NewGameActivity;
 
@@ -20,12 +23,29 @@ public class GlobalState {
     public BufferedReader socketIn;
     public PrintWriter socketOut;
 
-    protected GlobalState(){}
+    protected GlobalState() {
+    }
 
     public static synchronized GlobalState getInstance(){
         if(null == instance){
             instance = new GlobalState();
         }
         return instance;
+    }
+
+    public void setPlayerName(String name) {
+        playerName = name;
+    }
+
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public void setServerAddress(String address) {
+        server = address;
+    }
+
+    public String getServerAddress() {
+        return server;
     }
 }

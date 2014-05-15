@@ -1,5 +1,6 @@
 package com.battleship.app;
 
+import android.content.SharedPreferences;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -33,8 +34,17 @@ public class ConfigActivity extends ActionBarActivity {
             public void onClick(View arg0) {
                 EditText ip       = (EditText)findViewById(R.id.ip_addr);
                 EditText username = (EditText)findViewById(R.id.username);
-                config.server = ip.getText().toString();
-                config.playerName = username.getText().toString();
+
+                config.setServerAddress(ip.getText().toString());
+                config.setPlayerName(username.getText().toString());
+
+                SharedPreferences preferences = getSharedPreferences("BattleshipPrefs", MODE_PRIVATE);
+                SharedPreferences.Editor edit= preferences.edit();
+
+                edit.putString("PlayerName", config.getPlayerName());
+                edit.putString("ServerAddress", config.getServerAddress());
+                edit.commit();
+
                 finish();
             }
         });
