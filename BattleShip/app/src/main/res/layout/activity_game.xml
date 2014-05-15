@@ -3,8 +3,8 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/game_layout"
-    android:background="@drawable/backgroud">
+    android:id="@+id/game_layout">
+    <!--android:background="@drawable/backgroud">-->
 
     <TextView
         android:layout_width="fill_parent"
