@@ -24,6 +24,7 @@ public class NewGameActivity extends ActionBarActivity {
     public Button clear;
     public static ImageView[][] imageMap = new ImageView[10][10];
     public Handler uiHandler;
+    private boolean started = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,8 @@ public class NewGameActivity extends ActionBarActivity {
                 img.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View arg0) {
+                        if (started)
+                            return;
                         ImageView img = (ImageView) arg0;
                         boolean boolMap[][] = GlobalState.getInstance().boolMap;
                         Integer count = (Integer) img.getTag();
@@ -88,6 +91,7 @@ public class NewGameActivity extends ActionBarActivity {
             public void onClick(View arg0) {
                 start.setEnabled(false);
                 clear.setEnabled(false);
+                started = true;
                 start.setText("Waiting for enemy...");
                 (new Thread(new ServerThread())).start();
             }
