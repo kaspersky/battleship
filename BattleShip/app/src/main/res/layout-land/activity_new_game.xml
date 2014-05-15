@@ -9,6 +9,7 @@
         android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:weightSum="1">
 
         <TextView
@@ -19,7 +20,6 @@
             android:layout_gravity="center"
             android:inputType="text"
             android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
             android:gravity="center_vertical|center_horizontal"
             android:textSize="20dp" />
 
@@ -38,6 +38,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:gravity="center"
         android:layout_gravity="center">
 
         <Button
